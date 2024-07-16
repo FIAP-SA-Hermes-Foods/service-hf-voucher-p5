@@ -1,0 +1,49 @@
+syntax = "proto3";
+option go_package = "hf-voucher-api-service/voucher_api-proto";
+
+message CreateVoucherRequest {
+  string code = 1;
+  int64 percentage = 2;
+  string expiresAt = 3;
+}
+
+message CreateVoucherResponse {
+  string uuid = 1;
+  string code = 2;
+  int64 percentage = 3;
+  string createdAt = 4;
+  string expiresAt = 5;
+}
+
+message GetVoucherByIDRequest { string uuid = 1; }
+
+message GetVoucherByIDResponse {
+  string uuid = 1;
+  string code = 2;
+  int64 percentage = 3;
+  string createdAt = 4;
+  string ExpiresAt = 5;
+}
+
+message UpdateVoucherByIDRequest {
+  string uuid = 1;
+  string code = 2;
+  int64 percentage = 3;
+  string createdAt = 4;
+  string expiresAt = 5;
+}
+
+message UpdateVoucherByIDResponse {
+  string uuid = 1;
+  string code = 2;
+  int64 percentage = 3;
+  string createdAt = 4;
+  string expiresAt = 5;
+}
+
+service Voucher {
+  rpc CreateVoucher(CreateVoucherRequest) returns (CreateVoucherResponse);
+  rpc GetVoucherByID(GetVoucherByIDRequest) returns (GetVoucherByIDResponse);
+  rpc UpdateVoucherByID(UpdateVoucherByIDRequest)
+      returns (UpdateVoucherByIDResponse);
+}
